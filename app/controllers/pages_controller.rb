@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
     def home
-      render plain: "homepage"
+      
+    end
+
+    def not_found
+        
     end
 end

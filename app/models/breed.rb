@@ -1,4 +1,4 @@
 class Breed < ApplicationRecord
-    has_many :listings
+    has_many :listings 
 
 end

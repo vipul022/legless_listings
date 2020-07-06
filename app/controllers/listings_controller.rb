@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
     def create
         #create new listing
         @listing = Listing.create(listing_params)
+        # byebug
         
         if @listing.errors.any?
             render "new"
