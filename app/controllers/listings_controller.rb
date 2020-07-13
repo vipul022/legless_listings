@@ -18,6 +18,14 @@ class ListingsController < ApplicationController
 
     def update
         #update the current listing
+       
+
+        if @listing.update(listing_params)
+          redirect_to listings_path
+        else    
+            set_breeds_and_sexes
+            render "new"
+        end  
  
     end
 
@@ -39,11 +47,14 @@ class ListingsController < ApplicationController
 
     def destroy
         #deleted current listing
+        @listing.destroy
+        redirect_to listings_path
         
     end
 
     def show
         #show the single listing
+
        
     end
 
@@ -60,7 +71,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit( :title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet)
+        params.require(:listing).permit( :title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet, :picture)
     end
     
 

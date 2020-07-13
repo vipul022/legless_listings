@@ -2,9 +2,12 @@
 
 <% @listings.each do |listing| %>
   <div class = "card">
+      <%= image_tag listing.picture if listing.picture.attached? %>
       <p><%= listing.title %></p>
       <p><%= listing.description %></p>
       <p><%= listing.breed.name %></p>
       <%= link_to "Edit", edit_listing_path(listing.id) %>
+      <%= link_to 'Show', listing %>
+      <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>
