@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
+   
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
     before_action :set_breeds_and_sexes, only: [:new, :edit, :create]
+
     def create
         #create new listing
         @listing = Listing.create(listing_params)
