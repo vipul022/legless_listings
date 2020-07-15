@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
     #This will let all the users to view index and show page only
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_listing, only: [:show, :edit, :update, :destroy]
+    before_action :set_listing, only: [:show]
     before_action :set_user_listing, only: [:edit, :update, :destroy]
     before_action :set_breeds_and_sexes, only: [:new, :edit, :create]
 
@@ -77,9 +77,11 @@ class ListingsController < ApplicationController
 
     def set_user_listing
         id = params[:id]
+        #find_by_id give nil if there is no listing of current user
         @listing = current_user.listings.find_by_id(id)
         
         if @listing == nil
+        #boot the user out
           redirect_to listings_path
         end 
         # if @listing.user_id != current_user.id

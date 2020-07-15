@@ -7,8 +7,9 @@
       <p><%= listing.description %></p>
       <p><%= listing.breed.name %></p>
       <p><%= listing.user.email %></p>
-      <%= link_to "Edit", edit_listing_path(listing.id) %>
+      
+      <%= link_to "Edit", edit_listing_path(listing.id) if current_user.id == listing.user.id %>
       <%= link_to 'Show', listing %>
-      <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }if current_user.id == listing.user.id %>
   </div>
 <% end %>
