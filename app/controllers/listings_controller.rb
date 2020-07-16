@@ -1,9 +1,10 @@
 class ListingsController < ApplicationController
     #This will let all the users to view index and show page only
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_listing, only: [:show]
-    before_action :set_user_listing, only: [:edit, :update, :destroy]
+    before_action :set_listing, only: [:show, :edit, :update, :destroy]
+    # before_action :set_user_listing, only: [:edit, :update, :destroy]
     before_action :set_breeds_and_sexes, only: [:new, :edit, :create]
+    load_and_authorize_resource
 
     def create
         #create a listing for current signed in user
