@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     # any path that is not defined in the app
     resources :listings
     # get "*path", to:"pages#not_found"
+    get "/payments/success", to: "payments#success"
 end
